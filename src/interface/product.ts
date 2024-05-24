@@ -11,3 +11,13 @@ export interface ProductItem {
     image_url: string;
     stock: number;
   }
+
+  export interface INewsReportWithPaginate {
+    data: ProductItem[];
+    limit: number;
+    nextPage: number;
+    page: number;
+    prevPage: number;
+    total: number;
+    totalPage: number;
+  }
