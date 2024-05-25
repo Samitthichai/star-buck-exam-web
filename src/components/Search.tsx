@@ -17,12 +17,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, setSearchQuery }
   };
 
   const handleClearButtonClick = () => {
-    setSearchQuery(''); // Clear search query
-    setInputValue(''); // Clear input value
+    setSearchQuery('');
+    setInputValue('');
   };
 
   return (
-    <div className="input-group gap-3" style={{ width: 'auto' }}>
+    <div className="input-group gap-3 justify-content-center  align-items-center " style={{ width: '60rem' }}>
       <input
         type="search"
         className="form-control rounded-5"

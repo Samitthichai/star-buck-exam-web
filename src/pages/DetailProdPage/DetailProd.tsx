@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductItem } from '../../interface/product';
 import { useParams } from 'react-router-dom';
+import { getProductById } from '../../service/product';
 
 
 
@@ -11,16 +12,16 @@ import { useParams } from 'react-router-dom';
         const [product, setProduct] = useState<ProductItem | null>(null);
       
         useEffect(() => {
-          async function fetchData() {
+          const fetchProducts = async () => {
             try {
-              const response = await fetch(`https://6650a4caec9b4a4a6032d920.mockapi.io/api/starbuck-product/${id}`);
-              const data = await response.json();
-              setProduct(data);
+              const products = await getProductById(id);
+              setProduct(products);
             } catch (error) {
-              console.error("Error fetching product data:", error);
+              console.error('Error fetching products:', error);
             }
-          }
-          fetchData();
+          };
+          
+          fetchProducts();
         }, []);
       
         if (!product) {

@@ -1,9 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import ContentsProduct from "./components/Product";
+
 import ProductDetail from "./pages/DetailProdPage/DetailProd";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/Home";
+import ProductList from "./pages/Home/Containers/ProductList";
+
 
 const App = () => {
   return (
@@ -11,11 +14,12 @@ const App = () => {
       <NavBar/>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product" element={<ContentsProduct />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/product" element={<ProductList />} />
             <Route path="/starbuck-product/:id" element={<ProductDetail />} />
           </Routes>
         </Router>
+       <Footer/>
     
     </>
   );

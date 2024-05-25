@@ -12,6 +12,11 @@ export interface ProductItem {
     stock: number;
   }
 
+ export interface FilterOptions {
+    grind_options: string[];
+    regions: string[];
+  }
+
 
 
  

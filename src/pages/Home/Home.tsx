@@ -1,5 +1,7 @@
-import bgHomePage from "../../assets/bgHomePage.jpeg";
-import Filter from "../../components/Filter";
+import bgHomePage from "../../../src/assets/bgHomePage.jpeg";
+import { ProductItem } from "../../interface/product";
+import ProductList from "./Containers/ProductList";
+import ProductContent from "./Containers/ProductList";
 const HomePage = () => {
   return (
     <>
@@ -24,9 +26,14 @@ const HomePage = () => {
             </p>
           </div>
         </div>
+        
       </div>
-    
-      
+
+      <div className="row justify-content-center">
+  
+        <ProductList/>
+      </div>
+     
     </>
   );
 };
