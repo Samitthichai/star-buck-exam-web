@@ -72,6 +72,9 @@ const ProductContent = () => {
       return false;
     return true;
   });
+  /**
+   * this all of Search and Filter
+   */
 
   /**This condition checks if a region filter has been applied (regionFilter is not an empty string)
    * and if the item's region does not match the selected region.
