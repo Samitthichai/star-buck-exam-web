@@ -63,6 +63,7 @@ const ProductContent = () => {
   };
 
   const handleClearFilter = () => {
+    
 
     setSelectRegion([]);
     setSelectedGrindOptions([]);
