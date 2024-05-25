@@ -14,10 +14,8 @@ const ProductContent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedGrindOptions, setSelectedGrindOptions] = useState<string[]>(
-    []
-  );
-  const [selectRegion, setSelectRegion] = useState<string[]>([]);
+  const [selectedGrindOptions, setSelectedGrindOptions] = useState<string>("");
+  const [selectRegion, setSelectRegion] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,29 +43,19 @@ const ProductContent = () => {
   };
 
   const handleGrindChange = (grindOption: string) => {
-    setSelectedGrindOptions((prevSelected) =>
-      prevSelected.includes(grindOption)
-        ? prevSelected.filter((g) => g !== grindOption)
-        : [...prevSelected, grindOption]
-    );
-    setCurrentPage(1); // Reset page to 1 when applying filters
+    setSelectedGrindOptions(grindOption)
+    setCurrentPage(1);
   };
 
   const handleRegionchange = (region: string) => {
-    setSelectRegion((prevSelected) =>
-      prevSelected.includes(region)
-        ? prevSelected.filter((r) => r !== region)
-        : [...prevSelected, region]
-    );
+    setSelectRegion(region);
     setCurrentPage(1);
   };
 
   const handleClearFilter = () => {
-    
-
-    setSelectRegion([]);
-    setSelectedGrindOptions([]);
-    return false
+    setSelectRegion("");
+    setSelectedGrindOptions("");
+    return false;
   };
 
   useEffect(() => {

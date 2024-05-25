@@ -2,11 +2,11 @@ import React from "react";
 
 interface FilterProps {
   regions: string[];
-  selectedRegions: string[];
+  selectedRegions: string;
   onRegionChange: (region: string) => void;
 
   grindOptions: string[];
-  selectedGrindOptions: string[];
+  selectedGrindOptions: string;
   onGrindChange: (grindOption: string) => void;
 
   onClearFilters: () => void;
