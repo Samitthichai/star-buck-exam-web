@@ -1,37 +1,54 @@
-import ReactPaginate from "react-paginate";
-import styles from "@styles/pagination.module.scss";
-
-const Pagination = ({
-  pageCount,
-  onSelect,
-  pageRangeDisplayed = 3,
-  initialPage = 0,
-  marginPagesDisplayed = 1
-}: {
+import React from "react";
+import { Pagination } from "react-bootstrap";
+import "bootstrap-icons/font/bootstrap-icons.css";
+type PaginationProps = {
   pageCount: number;
-  onSelect: (value: number) => void;
-  pageRangeDisplayed?: number;
-  initialPage?: number;
-  marginPagesDisplayed?: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+};
+
+const CustomPagination: React.FC<PaginationProps> = ({
+  pageCount,
+  currentPage,
+  onPageChange,
 }) => {
+  const handlePageClick = (page: number) => {
+    if (page >= 1 && page <= pageCount) {
+      onPageChange(page);
+    }
+  };
+
   return (
-    <>
-      <ReactPaginate
-        nextLabel=""
-        previousLabel=""
-        pageCount={pageCount}
-        pageRangeDisplayed={pageRangeDisplayed}
-        initialPage={initialPage}
-        containerClassName="pagination"
-        marginPagesDisplayed={marginPagesDisplayed}
-        pageClassName={`${styles.pageItem}`}
-        pageLinkClassName={`${styles.pageLink}`}
-        breakLabel="..."
-        onPageChange={({ selected }) => onSelect(selected + 1)}
-        activeClassName={`${styles.active}`}
-      />
-    </>
+    <nav className="" aria-label="Page navigation">
+      <ul className="pagination" style={{ width: 'auto' }}>
+        {[...Array(pageCount)].map((_, index) => (
+          <li
+            key={index}
+            className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+            
+          >
+            <button
+              className="page-link rounded-circle"
+              onClick={() => handlePageClick(index + 1)}
+              style={{ width: "50px", height:"50px" }}
+            >
+              {index + 1}
+              {currentPage === index + 1 && <span className="sr-only"></span>}
+            </button>
+          </li>
+        ))}
+        <li
+          className={`page-item ${currentPage === pageCount ? "disabled" : ""}`}
+          
+        >
+          <i
+            className="bi bi-arrow-right" 
+            onClick={() => handlePageClick(currentPage + 1)}
+            style={{ width: "50px", height:"50px" }}          ></i>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
-export default Pagination;
+export default CustomPagination;

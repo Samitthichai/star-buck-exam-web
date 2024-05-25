@@ -1,6 +1,5 @@
 import bgHomePage from "../../assets/bgHomePage.jpeg";
 import Filter from "../../components/Filter";
-import SearchInput from "../../components/Search";
 const HomePage = () => {
   return (
     <>

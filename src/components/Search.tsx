@@ -1,43 +1,48 @@
-// src/components/SearchInput.tsx
-
 import React, { useState } from 'react';
 
-// Define the interface for the component props (if any)
 interface SearchInputProps {
-  onSearch: (query: string) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
-// const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => { //{ onSearch }
-//   const [query, setQuery] = useState<string>('');
+const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, setSearchQuery }) => {
+  const [inputValue, setInputValue] = useState('');
 
-//   const handleSearch = () => {
-//     onSearch(query);
-//   };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
-  const SearchInput =() => {
+  const handleSearchButtonClick = () => {
+    setSearchQuery(inputValue);
+  };
 
- 
+  const handleClearButtonClick = () => {
+    setSearchQuery(''); // Clear search query
+    setInputValue(''); // Clear input value
+  };
 
   return (
-    <div className="input-group  gap-3 " style={{ width: '1000px' }}>
+    <div className="input-group gap-3" style={{ width: 'auto' }}>
       <input
         type="search"
         className="form-control rounded-5"
         placeholder="Search"
         aria-label="Search"
         aria-describedby="search-addon"
-        // value={query}
-        // onChange={(e) => setQuery(e.target.value)}
+        value={inputValue}
+        onChange={handleInputChange}
+        onClick={handleClearButtonClick}
       />
       <button
         type="button"
-        className="btn  rounded-5  gap-2 "
+        className="btn rounded-5 gap-2"
         data-mdb-ripple-init
-        // onClick={handleSearch}
         style={{ backgroundColor: '#D6D6D6', color: 'white' }}
+        onClick={handleSearchButtonClick}
       >
         Search
       </button>
+      
     </div>
   );
 };
