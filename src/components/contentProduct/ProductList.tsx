@@ -1,18 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
-import { Card, Col, PageItem, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "../../../src/styles/card.css";
-import {
-  SearchFilterProduct,
-  usePagination,
-} from "../../helper/productStarBuck";
-import Filter from "../Filter";
-import SearchInput from "../Search";
-import CustomPagination from "../Pagination";
 import { ProductItem } from "../../interface/product";
 import { getAllProduct } from "../../service/product";
-import "../../../src/styles/backgrond-Img.css";
+import CustomPagination from "../Pagination";
+import SearchInput from "../Search";
+import Filter from "../Filter";
+import { SearchFilterProduct, usePagination } from "../../helper/productStarBuck";
+
 const ProductContent = () => {
   const [itemsPerPage] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,7 +31,6 @@ const ProductContent = () => {
       try {
         const products = await getAllProduct();
         setInitialData(products);
-        console.log(products);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -73,89 +68,62 @@ const ProductContent = () => {
     setCurrentPage(1);
   }, [searchQuery, selectRegion, selectedGrindOptions]);
 
-  const regions = Array.from(
-    new Set(initialData?.map((item) => item.region) || []),
-  );
-  const grindOptions = Array.from(
-    new Set(initialData?.map((item) => item.grind_option) || []),
-  );
   return (
-    <>
-      <Row className="justify-content-center">
-        <Col sm={4} style={{ width: "15rem" }}>
-          <Filter
-            regions={regions}
-            selectedRegions={selectRegion}
-            onRegionChange={handleRegionChange}
-            grindOptions={grindOptions}
-            selectedGrindOptions={selectedGrindOptions}
-            onGrindChange={handleGrindChange}
-            onClearFilters={handleClearFilter}
-          />
-        </Col>
-        <Col sm={8}>
-          <SearchInput
-            searchQuery={searchQuery}
-            setSearchQuery={handleSearch}
-          />
+    <Row className="mx-0">
+      <Col xs={12} md={4}>
+        <Filter
+          regions={Array.from(new Set(initialData?.map((item) => item.region) || []))}
+          selectedRegions={selectRegion}
+          onRegionChange={handleRegionChange}
+          grindOptions={Array.from(new Set(initialData?.map((item) => item.grind_option) || []))}
+          selectedGrindOptions={selectedGrindOptions}
+          onGrindChange={handleGrindChange}
+          onClearFilters={handleClearFilter}
+        />
+      </Col>
+      <Col xs={12} md={8}>
+        <SearchInput searchQuery={searchQuery} setSearchQuery={handleSearch} />
 
-          <div className="row row-cols-1 row-cols-md-3 g-2 mt-3">
-            {currentItems.length > 0 ? (
-              currentItems.map((product) => (
-                <div key={product.id} className="col">
-                  <Card
-                    className="position-sticky card-hover"
-                    onClick={() => handleToDetailPage(product.id)}
-                    style={{
-                      width: "15rem",
-                      height: "auto",
-                      margin: "2px",
-                      cursor: "pointer",
-                      borderRadius: "none",
-                    }}
-                  >
-                    <Card.Img
-                      className="object-fit-cover bg-image"
-                      variant="top"
-                      src={product.image_url[0]}
-                      style={{
-                        width: "auto",
-                        height: "12rem",
-                      }}
-                    />
-                    <Card.Body>
-                      <Card.Title className="font-weight-bold m-0 fs-20">
-                        {product.name}
-                      </Card.Title>
-                      <Card.Text>
-                        <div
-                          className="text-center mt-1"
-                          style={{ width: "100px" }}
-                        >
-                          <div className="font-weight-bold rounded-5 bg-black w-auto text-white text-small">
-                            {product.grind_option}
-                          </div>
+        <Row xs={1} md={2} lg={3} className="g-2 mt-3">
+          {currentItems.length > 0 ? (
+            currentItems.map((product) => (
+              <Col key={product.id}>
+                <Card
+                  className="position-sticky card-hover"
+                  onClick={() => handleToDetailPage(product.id)}
+                  style={{ cursor: "pointer", borderRadius: "none" }}
+                >
+                  <Card.Img
+                    className="object-fit-cover bg-image"
+                    variant="top"
+                    src={product.image_url[0]}
+                    style={{ height: "12rem" }}
+                  />
+                  <Card.Body>
+                    <Card.Title className="font-weight-bold m-0 fs-20">{product.name}</Card.Title>
+                    <Card.Text>
+                      <div className="text-center mt-1" style={{ width: "100px" }}>
+                        <div className="font-weight-bold rounded-5 bg-black w-auto text-white text-small">
+                          {product.grind_option}
                         </div>
-                      </Card.Text>
-                      <Card.Text className="mt-3">
-                        ${Number(product.price).toFixed(2)}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </div>
-              ))
-            ) : (
-              <p>No matching products found.</p>
-            )}
-          </div>
-          <CustomPagination
-            pageCount={Math.ceil((initialData.length || 0) / itemsPerPage)}
-            currentPage={currentPage}
-            onPageChange={handlePageClick}
-          />
-        </Col>
-      </Row>
-    </>
+                      </div>
+                    </Card.Text>
+                    <Card.Text className="mt-3">${Number(product.price).toFixed(2)}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          ) : (
+            <p className="col">No matching products found.</p>
+          )}
+        </Row>
+        <CustomPagination
+          pageCount={Math.ceil((initialData.length || 0) / itemsPerPage)}
+          currentPage={currentPage}
+          onPageChange={handlePageClick}
+        />
+      </Col>
+    </Row>
   );
 };
 
