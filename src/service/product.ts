@@ -8,6 +8,3 @@ export const getAllProduct = async (): Promise<ProductItem[]> => {
 export const getProductById = async (id?: string): Promise<ProductItem> => {
   return httpClient.get(`/starbuck-product/${id}`).then(({ data }) => data);
 };
-
-
-

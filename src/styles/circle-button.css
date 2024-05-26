@@ -1,0 +1,11 @@
+.page-link.rounded-circle {
+  border-radius: 50%;
+  border: none;
+  color: black;
+  width: 40px;
+}
+
+.page-item.active .page-link {
+  background-color: #067655;
+  color: white;
+}

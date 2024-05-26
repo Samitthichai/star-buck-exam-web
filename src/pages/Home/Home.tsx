@@ -1,11 +1,10 @@
 import bgHomePage from "../../../src/assets/bgHomePage.jpeg";
-import { ProductItem } from "../../interface/product";
-import ProductList from "./Containers/ProductList";
-import ProductContent from "./Containers/ProductList";
+import ProductList from "../../components/contentProduct/ProductList";
+
 const HomePage = () => {
   return (
     <>
-      <div className="position-relative" style={{ height: "500px" }}>
+      <div className="position-relative w-100" style={{ height: "500px" }}>
         <img
           src={bgHomePage}
           alt="bg"
@@ -13,12 +12,12 @@ const HomePage = () => {
         />
         <div className="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-75"></div>
         <div
-          className="position-absolute top-50 start-50 translate-middle"
+          className="position-absolute top-50 start-50 translate-middle text-center px-3"
           style={{ zIndex: 1 }}
         >
-          <div className="w-auto h-50 text-white">
+          <div className="w-auto text-white">
             <h3>STARBUCKS RESERVE</h3>
-            <p className="w-60">
+            <p className="mx-auto" style={{ maxWidth: "600px" }}>
               Since 1971, it always has been and will always be about quality.
               We’re passionate about ethically sourcing only the finest Arabica
               coffee beans and roasting them with great care. Our passion for
@@ -26,14 +25,10 @@ const HomePage = () => {
             </p>
           </div>
         </div>
-        
       </div>
-
-      <div className="row justify-content-center">
-  
-        <ProductList/>
+      <div className="container mt-5">
+        <ProductList />
       </div>
-     
     </>
   );
 };

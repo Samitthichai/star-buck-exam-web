@@ -1,18 +1,23 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const Footer = () => {
-    return (
-         <footer className="bg-body-tertiary text-center text-lg-start">
-    <div className="row text-center p-3 text-white"  style={{ backgroundColor: '#303030' }} >
+  return (
+    <footer
+      className="text-white py-2"
+      style={{ backgroundColor: "#303030", maxWidth: "100%", width: "auto" }}
+    >
+      <div className="container d-flex justify-content-between text-center">
         <div>
-        ©2024 Coffee Concepts Retail Co.,Ltd. All rights
+          <p className="mb-0">
+            ©2024 Coffee Concepts Retail Co., Ltd. All rights reserved.
+          </p>
         </div>
-        <div   >
-    Starbucks Thailand
-    </div>
-    </div>
-    
-  </footer>
-    )
- 
+        <div>
+          <p className="mb-0">Starbucks Thailand</p>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
-export default Footer
+export default Footer;

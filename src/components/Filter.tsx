@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../../src/styles/clear-button-filter.css";
 interface FilterProps {
   regions: string[];
   selectedRegions: string;
@@ -19,7 +19,7 @@ const Filter: React.FC<FilterProps> = ({
   selectedGrindOptions,
   onRegionChange,
   onGrindChange,
-  onClearFilters
+  onClearFilters,
 }) => {
   const handleRegionCheckboxChange = (region: string) => {
     onRegionChange(region);
@@ -30,49 +30,59 @@ const Filter: React.FC<FilterProps> = ({
   };
 
   return (
-    <div className="row">
-      <div className="row">
-        <h2>Filter</h2>
+    <div className="row" style={{ width: "auto", height: "auto" }}>
+      <div className="d-flex justify-content-between align-items-center">
+        <h3>Filter</h3>
+
         <button
           type="button"
-          className="btn rounded-5 gap-2"
+          className="btn  clear-button"
           data-mdb-ripple-init
-          style={{ backgroundColor: '#D6D6D6', color: 'white' }}
           onClick={onClearFilters}
         >
-          Clear
+          X Clear
         </button>
       </div>
-      <div>
-        <h4>Region</h4>
-        {regions.map((region) => (
-          <div key={region}>
-            <input
-              type="checkbox"
-              id={region}
-              value={region}
-              checked={selectedRegions.includes(region)}
-              onChange={() => handleRegionCheckboxChange(region)}
-            />
-            <label htmlFor={region}>{region}</label>
-          </div>
-        ))}
-      </div>
+      <div className=" mt-3 ">
+        <div>
+          <h4 className=" fw-medium ">Region</h4>
+          <hr className="m-0" />
+          {regions.map((region) => (
+            <div key={region} className=" pt-2 ">
+              <input
+                type="checkbox"
+                className=" g-lg-5 "
+                id={region}
+                value={region}
+                checked={selectedRegions.includes(region)}
+                onChange={() => handleRegionCheckboxChange(region)}
+              />
+              <label className=" ps-2 " htmlFor={region}>
+                {region}
+              </label>
+            </div>
+          ))}
+        </div>
 
-      <div>
-        <h4>Grind Option</h4>
-        {grindOptions.map((grindOption) => (
-          <div key={grindOption}>
-            <input
-              type="checkbox"
-              id={grindOption}
-              value={grindOption}
-              checked={selectedGrindOptions.includes(grindOption)}
-              onChange={() => handleGrindCheckboxChange(grindOption)}
-            />
-            <label htmlFor={grindOption}>{grindOption}</label>
-          </div>
-        ))}
+        <div>
+          <h4 className=" fw-medium mt-3">Grind Option</h4>
+          <hr className="m-0" />
+          {grindOptions.map((grindOption) => (
+            <div key={grindOption} className=" pt-2 ">
+              <input
+                type="checkbox"
+                className=" g-lg-5 "
+                id={grindOption}
+                value={grindOption}
+                checked={selectedGrindOptions.includes(grindOption)}
+                onChange={() => handleGrindCheckboxChange(grindOption)}
+              />
+              <label className=" ps-2 " htmlFor={grindOption}>
+                {grindOption}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

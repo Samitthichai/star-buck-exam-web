@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface SearchInputProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, setSearchQuery }) => {
-  const [inputValue, setInputValue] = useState('');
+const SearchInput: React.FC<SearchInputProps> = ({
+  searchQuery,
+  setSearchQuery,
+}) => {
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -17,15 +20,15 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, setSearchQuery }
   };
 
   const handleClearButtonClick = () => {
-    setSearchQuery('');
-    setInputValue('');
+    setSearchQuery("");
+    setInputValue("");
   };
 
   return (
-    <div className="input-group gap-3 justify-content-center  align-items-center " style={{ width: '60rem' }}>
+    <div className="input-group gap-3 justify-content-center  align-items-center ">
       <input
         type="search"
-        className="form-control rounded-5"
+        className="form-control rounded-5 w-auto "
         placeholder="Search"
         aria-label="Search"
         aria-describedby="search-addon"
@@ -37,12 +40,11 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, setSearchQuery }
         type="button"
         className="btn rounded-5 gap-2"
         data-mdb-ripple-init
-        style={{ backgroundColor: '#D6D6D6', color: 'white' }}
+        style={{ backgroundColor: "#D6D6D6", color: "white" }}
         onClick={handleSearchButtonClick}
       >
         Search
       </button>
-      
     </div>
   );
 };

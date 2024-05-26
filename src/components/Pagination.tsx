@@ -1,6 +1,8 @@
 import React from "react";
-import { Pagination } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "../styles/circle-button.css";
+import "../styles/custom-pagination.css";
+
 type PaginationProps = {
   pageCount: number;
   currentPage: number;
@@ -19,18 +21,16 @@ const CustomPagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <nav className="" aria-label="Page navigation">
-      <ul className="pagination" style={{ width: 'auto' }}>
+    <nav aria-label="Page navigation">
+      <ul className="pagination justify-content-center g-3 mt-3">
         {[...Array(pageCount)].map((_, index) => (
           <li
             key={index}
-            className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
-            
+            className={`page-item ${currentPage === index + 1 ? "active" : ""} ps-3 `}
           >
             <button
-              className="page-link rounded-circle"
+              className="page-link rounded-circle "
               onClick={() => handlePageClick(index + 1)}
-              style={{ width: "50px", height:"50px" }}
             >
               {index + 1}
               {currentPage === index + 1 && <span className="sr-only"></span>}
@@ -38,13 +38,19 @@ const CustomPagination: React.FC<PaginationProps> = ({
           </li>
         ))}
         <li
-          className={`page-item ${currentPage === pageCount ? "disabled" : ""}`}
-          
+          className={`page-item ${currentPage === pageCount ? "disabled" : ""} ps-3`}
         >
-          <i
-            className="bi bi-arrow-right" 
+          <button
+            className="page-link rounded-circle"
+            aria-label="Next"
             onClick={() => handlePageClick(currentPage + 1)}
-            style={{ width: "50px", height:"50px" }}          ></i>
+            style={{ border: "none" }}
+          >
+            <span aria-hidden="true">
+              <i className="bi bi-arrow-right "></i>
+            </span>
+            <span className="visually-hidden">Next</span>
+          </button>
         </li>
       </ul>
     </nav>
