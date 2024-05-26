@@ -36,7 +36,7 @@ const ProductDetail = () => {
         </div>
         <div className="col-md-6">
           <h3>{product.name}</h3>
-          <p>{product.description}</p>
+          {product.description}
           <div className="mt-3">
             <h4>Coffee Profile</h4>
             <div className="row">
@@ -56,7 +56,7 @@ const ProductDetail = () => {
                   
                 </div>
               </div>
-              <div className="col-md-6 pt-3">
+              <div className="col-md-6 t-3">
                 <strong>Flavors Profile</strong>
                 <FormattedList msg={product.flavor_profile} />
               </div>

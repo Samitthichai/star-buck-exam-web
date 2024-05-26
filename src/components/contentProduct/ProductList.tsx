@@ -11,7 +11,7 @@ import {
   SearchFilterProduct,
   usePagination,
 } from "../../helper/productStarBuck";
-import "../../styles/card.css"
+import "../../styles/card.css";
 
 const ProductContent = () => {
   const [itemsPerPage] = useState(12);
@@ -25,7 +25,7 @@ const ProductContent = () => {
     initialData,
     searchQuery,
     selectRegion,
-    selectedGrindOptions,
+    selectedGrindOptions
   );
   const { currentItems, currentPage, handlePageClick, setCurrentPage } =
     usePagination(12, filteredProductItems);
@@ -77,12 +77,12 @@ const ProductContent = () => {
       <Col xs={12} md={4}>
         <Filter
           regions={Array.from(
-            new Set(initialData?.map((item) => item.region) || []),
+            new Set(initialData?.map((item) => item.region) || [])
           )}
           selectedRegions={selectRegion}
           onRegionChange={handleRegionChange}
           grindOptions={Array.from(
-            new Set(initialData?.map((item) => item.grind_option) || []),
+            new Set(initialData?.map((item) => item.grind_option) || [])
           )}
           selectedGrindOptions={selectedGrindOptions}
           onGrindChange={handleGrindChange}
@@ -99,7 +99,7 @@ const ProductContent = () => {
                 <Card
                   className="position-sticky card-hover"
                   onClick={() => handleToDetailPage(product.id)}
-                  style={{ cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                 >
                   <Card.Img
                     className="object-fit-cover bg-image"
@@ -129,7 +129,9 @@ const ProductContent = () => {
               </Col>
             ))
           ) : (
-            <p className="col">No matching products found.</p>
+            <div>
+              <p className="col">No matching products found.</p>
+            </div>
           )}
         </Row>
         <CustomPagination
