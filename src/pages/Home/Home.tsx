@@ -1,7 +1,7 @@
 import bgHomePage from "../../../src/assets/bgHomePage.jpeg";
 import ProductList from "../../components/contentProduct/ProductList";
 
-const HomePage = () => {
+const Home = () => {
   return (
     <>
       <div className="position-relative w-100" style={{ height: "500px" }}>
@@ -33,4 +33,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

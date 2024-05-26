@@ -8,6 +8,6 @@ export interface ProductItem {
   flavor_profile: string[];
   grind_option: string;
   roast_level: number;
-  image_url: string;
+  image_url: string[];
   stock: number;
 }

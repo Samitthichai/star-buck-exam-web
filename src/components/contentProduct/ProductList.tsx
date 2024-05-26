@@ -117,7 +117,7 @@ const ProductContent = () => {
                     <Card.Img
                       className="object-fit-cover bg-image"
                       variant="top"
-                      src={product.image_url}
+                      src={product.image_url[0]}
                       style={{
                         width: "auto",
                         height: "12rem",

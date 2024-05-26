@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Footer = () => {
   return (
     <footer
-      className="text-white py-2"
+      className="text-white py-2 mt-3 bottom"
       style={{ backgroundColor: "#303030", maxWidth: "100%", width: "auto" }}
     >
       <div className="container d-flex justify-content-between text-center">

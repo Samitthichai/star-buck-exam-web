@@ -3,6 +3,9 @@ import { ProductItem } from "../../interface/product";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../service/product";
 import "../../../src/styles/backgrond-Img.css";
+import CarouselComponent from "../../components/ImageCarousel";
+import LevelGenerate from "../../components/levelComponent";
+import FormattedList from "../../components/FormatText";
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   console.log("Detail PAge Id", id);
@@ -27,48 +30,39 @@ const ProductDetail = () => {
   }
   return (
     <div
-      className="d-flex justify-content-center align-items-center mt-5 "
-      style={{ width: "100%" }}
+      className=" position-relative d-flex justify-content-center align-items-center mt-5 "
+      style={{ width: "100%", height: "50%" }}
     >
       <div
         className="row"
-        style={{ maxWidth: "1000px", width: "100%", height: "100vh" }}
+        style={{ maxWidth: "auto", width: "90%", height: "100vh" }}
       >
         <div className="col  p-0">
-          <div style={{ height: "20rem" }}>
-            <img
-              className="w-100 h-auto object-fit-cover bg-image-detail"
-              src={product.image_url}
-              alt="Product"
-            />
+          <div>
+            <CarouselComponent images={product.image_url} />
           </div>
         </div>
-        <div className="col p-3 ">
+        < className="col">
           <div>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
-            <div className=" mt-3 ">
+            <div className="mt-3">
               <h4>Coffee Profile</h4>
-              <div className="row ">
-                <div className="col-6   ">
-                  <strong>Roast Level:</strong> {product.roast_level}
+              <div className="row  w-100     ">
+                <div className="col-6">
+                  <strong>Roast Level:</strong>
+                  <LevelGenerate numberOfCircles={product.roast_level} />
                 </div>
                 <div className="col-6">
-                  <strong>weight:</strong> {product.weight}g
+                  <strong>Weight:</strong> {product.weight}g
                 </div>
                 <div className="col-6 pt-3">
                   <strong>Grid Option</strong>
-                  <div
-                    className="text-center font-weight-bold rounded-5 bg-black text-white text-small"
-                    style={{ width: "100px" }}
-                  >
-                    {product.grind_option}
-                  </div>
+                  <div className="">{product.grind_option}</div>
                 </div>
-
                 <div className="col-6 pt-3">
-                  <strong>Flavors Profile:</strong>{" "}
-                  <p>{product.flavor_profile}</p>
+                  <strong>Flavors Profile:</strong>
+                  <FormattedList msg={product.flavor_profile} />
                 </div>
                 <div className="col-6 pt-3">
                   <strong>Region:</strong> Latin America
@@ -79,7 +73,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-        </div>
+        </>
       </div>
     </div>
   );
