@@ -11,8 +11,3 @@ export interface ProductItem {
   image_url: string;
   stock: number;
 }
-
-export interface FilterOptions {
-  grind_options: string[];
-  regions: string[];
-}

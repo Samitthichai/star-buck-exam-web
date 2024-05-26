@@ -1,0 +1,16 @@
+.bg-image-detail {
+  background: linear-gradient(
+    to bottom right,
+    #f6bcbc,
+    #fbecd2,
+    #fcf5cf,
+    #eff4bc,
+    #c7f9b5,
+    #b0eaf7,
+    #d1d1f7
+  );
+}
+
+.bg-image {
+  background: #067655;
+}

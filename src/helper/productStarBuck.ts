@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAllProduct } from "../service/product";
 import { ProductItem } from "../interface/product";
-import { log } from "console";
 
 export const usePagination = (itemsPerPage: number, data: any) => {
   const [currentPage, setCurrentPage] = useState(1);

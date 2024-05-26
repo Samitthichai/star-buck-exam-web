@@ -12,6 +12,7 @@ import SearchInput from "../Search";
 import CustomPagination from "../Pagination";
 import { ProductItem } from "../../interface/product";
 import { getAllProduct } from "../../service/product";
+import "../../../src/styles/backgrond-Img.css";
 const ProductContent = () => {
   const [itemsPerPage] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
@@ -114,13 +115,12 @@ const ProductContent = () => {
                     }}
                   >
                     <Card.Img
-                      className="object-fit-cover"
+                      className="object-fit-cover bg-image"
                       variant="top"
                       src={product.image_url}
                       style={{
                         width: "auto",
                         height: "12rem",
-                        backgroundColor: "#067655",
                       }}
                     />
                     <Card.Body>

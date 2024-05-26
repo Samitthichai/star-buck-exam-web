@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ProductItem } from "../../interface/product";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../service/product";
-
+import "../../../src/styles/backgrond-Img.css";
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   console.log("Detail PAge Id", id);
@@ -37,10 +37,9 @@ const ProductDetail = () => {
         <div className="col  p-0">
           <div style={{ height: "20rem" }}>
             <img
-              className="w-100 h-auto object-fit-cover"
+              className="w-100 h-auto object-fit-cover bg-image-detail"
               src={product.image_url}
               alt="Product"
-              style={{ backgroundColor: " #067655" }}
             />
           </div>
         </div>
