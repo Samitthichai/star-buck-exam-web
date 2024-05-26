@@ -5,10 +5,7 @@ interface SearchInputProps {
   setSearchQuery: (query: string) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
-  searchQuery,
-  setSearchQuery,
-}) => {
+const SearchInput: React.FC<SearchInputProps> = ({ setSearchQuery }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

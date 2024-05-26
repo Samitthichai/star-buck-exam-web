@@ -7,7 +7,7 @@ import LevelGenerate from "../../components/levelComponent";
 import FormattedList from "../../components/FormatText";
 
 const ProductDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id :string }>();
 
   const [product, setProduct] = useState<ProductItem | null>(null);
 
@@ -17,7 +17,7 @@ const ProductDetail = () => {
         const fetchedProduct = await getProductById(id);
         setProduct(fetchedProduct);
       } catch (error) {
-        console.error("Error fetching product:", error);
+        console.error("Error fetching product", error);
       }
     };
 
@@ -41,27 +41,30 @@ const ProductDetail = () => {
             <h4>Coffee Profile</h4>
             <div className="row">
               <div className="col-md-6">
-                <strong>Roast Level:</strong>
+                <strong>Roast Level</strong>
                 <LevelGenerate numberOfCircles={product.roast_level} />
               </div>
               <div className="col-md-6">
-                <strong>Weight:</strong> {product.weight}g
+                <strong>Weight</strong> {product.weight}g
               </div>
               <div className="col-md-6 pt-3">
                 <strong>Grid Option</strong>
-                <div className="text-center font-weight-bold rounded-5 bg-black text-white text-small">
+                <div  style={{width: "auto"}}>
+                  <div className="text-center font-weight-bold rounded-5 bg-black text-white text-small w-50 ">
                   {product.grind_option}
+                  </div>
+                  
                 </div>
               </div>
               <div className="col-md-6 pt-3">
-                <strong>Flavors Profile:</strong>
+                <strong>Flavors Profile</strong>
                 <FormattedList msg={product.flavor_profile} />
               </div>
               <div className="col-md-6 pt-3">
-                <strong>Region:</strong> Latin America
+                <strong>Region</strong> Latin America
               </div>
               <div className="col-md-6 pt-3">
-                <strong>Price:</strong> ${Number(product.price).toFixed(2)}
+                <strong>Price</strong> ${Number(product.price).toFixed(2)}
               </div>
             </div>
           </div>

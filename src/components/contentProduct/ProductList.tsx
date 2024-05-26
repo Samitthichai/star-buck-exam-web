@@ -11,6 +11,7 @@ import {
   SearchFilterProduct,
   usePagination,
 } from "../../helper/productStarBuck";
+import "../../styles/card.css"
 
 const ProductContent = () => {
   const [itemsPerPage] = useState(12);
@@ -98,7 +99,7 @@ const ProductContent = () => {
                 <Card
                   className="position-sticky card-hover"
                   onClick={() => handleToDetailPage(product.id)}
-                  style={{ cursor: "pointer", borderRadius: "none" }}
+                  style={{ cursor: "pointer"}}
                 >
                   <Card.Img
                     className="object-fit-cover bg-image"
