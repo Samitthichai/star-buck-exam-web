@@ -9,7 +9,6 @@ import FormattedList from "../../components/FormatText";
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
 
-
   const [product, setProduct] = useState<ProductItem | null>(null);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="container mt-5  "  style={{height: "100vh"}} >
+    <div className="container mt-5  " style={{ height: "100vh" }}>
       <div className="row">
         <div className="col-md-6">
           <CarouselComponent images={product.image_url} />

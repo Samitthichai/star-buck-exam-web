@@ -7,7 +7,10 @@ import { getAllProduct } from "../../service/product";
 import CustomPagination from "../Pagination";
 import SearchInput from "../Search";
 import Filter from "../Filter";
-import { SearchFilterProduct, usePagination } from "../../helper/productStarBuck";
+import {
+  SearchFilterProduct,
+  usePagination,
+} from "../../helper/productStarBuck";
 
 const ProductContent = () => {
   const [itemsPerPage] = useState(12);
@@ -72,10 +75,14 @@ const ProductContent = () => {
     <Row className="mx-0">
       <Col xs={12} md={4}>
         <Filter
-          regions={Array.from(new Set(initialData?.map((item) => item.region) || []))}
+          regions={Array.from(
+            new Set(initialData?.map((item) => item.region) || []),
+          )}
           selectedRegions={selectRegion}
           onRegionChange={handleRegionChange}
-          grindOptions={Array.from(new Set(initialData?.map((item) => item.grind_option) || []))}
+          grindOptions={Array.from(
+            new Set(initialData?.map((item) => item.grind_option) || []),
+          )}
           selectedGrindOptions={selectedGrindOptions}
           onGrindChange={handleGrindChange}
           onClearFilters={handleClearFilter}
@@ -100,15 +107,22 @@ const ProductContent = () => {
                     style={{ height: "12rem" }}
                   />
                   <Card.Body>
-                    <Card.Title className="font-weight-bold m-0 fs-20">{product.name}</Card.Title>
+                    <Card.Title className="font-weight-bold m-0 fs-20">
+                      {product.name}
+                    </Card.Title>
                     <Card.Text>
-                      <div className="text-center mt-1" style={{ width: "100px" }}>
+                      <div
+                        className="text-center mt-1"
+                        style={{ width: "100px" }}
+                      >
                         <div className="font-weight-bold rounded-5 bg-black w-auto text-white text-small">
                           {product.grind_option}
                         </div>
                       </div>
                     </Card.Text>
-                    <Card.Text className="mt-3">${Number(product.price).toFixed(2)}</Card.Text>
+                    <Card.Text className="mt-3">
+                      ${Number(product.price).toFixed(2)}
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
