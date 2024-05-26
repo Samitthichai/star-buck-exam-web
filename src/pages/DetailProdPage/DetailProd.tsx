@@ -35,14 +35,14 @@ const ProductDetail = () => {
     >
       <div
         className="row"
-        style={{ maxWidth: "auto", width: "90%", height: "100vh" }}
+        style={{ maxWidth: "auto", width: "90%", height: "100vh"}}
       >
         <div className="col  p-0">
-          <div>
+          <div >
             <CarouselComponent images={product.image_url} />
           </div>
         </div>
-        < className="col">
+        <div className="col">
           <div>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
@@ -51,18 +51,23 @@ const ProductDetail = () => {
               <div className="row  w-100     ">
                 <div className="col-6">
                   <strong>Roast Level:</strong>
-                  <LevelGenerate numberOfCircles={product.roast_level} />
+                  <LevelGenerate  numberOfCircles={product.roast_level} />
                 </div>
                 <div className="col-6">
                   <strong>Weight:</strong> {product.weight}g
                 </div>
                 <div className="col-6 pt-3">
                   <strong>Grid Option</strong>
-                  <div className="">{product.grind_option}</div>
+                  <div
+                    className=""
+                    
+                  >
+                    {product.grind_option}
+                  </div>
                 </div>
                 <div className="col-6 pt-3">
                   <strong>Flavors Profile:</strong>
-                  <FormattedList msg={product.flavor_profile} />
+                  <FormattedList msg={product.flavor_profile}/>
                 </div>
                 <div className="col-6 pt-3">
                   <strong>Region:</strong> Latin America
@@ -73,7 +78,7 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-        </>
+        </div>
       </div>
     </div>
   );
