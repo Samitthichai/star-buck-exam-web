@@ -1,31 +1,24 @@
 import { useState, useEffect } from "react";
 import { ProductItem } from "../interface/product";
 
-export const usePagination = (itemsPerPage: number, data: any) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productItems, setProductItems] = useState<ProductItem[]>([]);
-
-  useEffect(() => {
-    setProductItems(data);
-  }, [data]);
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = productItems.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(currentItems);
-
-  const handlePageClick = (selectedPage: number) => {
-    setCurrentPage(selectedPage);
+export const usePagination = (itemsPerPage: number, data: ProductItem[]) => {
+    const [currentPage, setCurrentPage] = useState(1);
+  
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  
+    const handlePageClick = (selectedPage: number) => {
+      setCurrentPage(selectedPage);
+    };
+  
+    return {
+      currentItems,
+      currentPage,
+      handlePageClick,
+      setCurrentPage,
+    };
   };
-
-  return {
-    currentItems,
-    currentPage,
-    handlePageClick,
-    setProductItems,
-    setCurrentPage,
-  };
-};
 
 export const SearchFilterProduct = (
   productItems: ProductItem[],
