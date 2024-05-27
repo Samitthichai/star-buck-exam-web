@@ -16,8 +16,8 @@ import "../../styles/card.css";
 const ProductContent = () => {
   const [itemsPerPage] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedGrindOptions, setSelectedGrindOptions] = useState<string>("");
-  const [selectRegion, setSelectRegion] = useState<string>("");
+  const [selectedGrindOptions, setSelectedGrindOptions] = useState<string[]>([]);
+  const [selectRegion, setSelectRegion] = useState<string[]>([]);
   const [initialData, setInitialData] = useState<ProductItem[]>([]);
   const navigate = useNavigate();
 
@@ -52,19 +52,19 @@ const ProductContent = () => {
     setCurrentPage(1);
   };
 
-  const handleGrindChange = (grindOption: string) => {
+  const handleGrindChange = (grindOption: string[]) => {
     setSelectedGrindOptions(grindOption);
     setCurrentPage(1);
   };
 
-  const handleRegionChange = (region: string) => {
+  const handleRegionChange = (region: string[]) => {
     setSelectRegion(region);
     setCurrentPage(1);
   };
 
   const handleClearFilter = () => {
-    setSelectRegion("");
-    setSelectedGrindOptions("");
+    setSelectRegion([]);
+    setSelectedGrindOptions([]);
     setCurrentPage(1);
   };
 

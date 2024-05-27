@@ -2,12 +2,12 @@ import React from "react";
 import "../../src/styles/clear-button-filter.css";
 interface FilterProps {
   regions: string[];
-  selectedRegions: string;
-  onRegionChange: (region: string) => void;
+  selectedRegions: string[];
+  onRegionChange: (region: string[]) => void;
 
   grindOptions: string[];
-  selectedGrindOptions: string;
-  onGrindChange: (grindOption: string) => void;
+  selectedGrindOptions: string[];
+  onGrindChange: (grindOption: string[]) => void;
 
   onClearFilters: () => void;
 }
@@ -22,11 +22,21 @@ const Filter: React.FC<FilterProps> = ({
   onClearFilters,
 }) => {
   const handleRegionCheckboxChange = (region: string) => {
-    onRegionChange(region);
+    const updatedRegions = selectedRegions.includes(region)
+      ? selectedRegions.filter((r) => r !== region)
+      : [...selectedRegions, region];
+
+    onRegionChange(updatedRegions);
+
   };
+  
 
   const handleGrindCheckboxChange = (grindOption: string) => {
-    onGrindChange(grindOption);
+    const updatedGridOption = selectedGrindOptions.includes(grindOption)
+    ? selectedGrindOptions.filter((g) => g !== grindOption)
+    : [...selectedGrindOptions, grindOption];
+ 
+    onGrindChange(updatedGridOption);
   };
 
   return (

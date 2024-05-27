@@ -23,11 +23,13 @@ export const usePagination = (itemsPerPage: number, data: ProductItem[]) => {
 export const SearchFilterProduct = (
   productItems: ProductItem[],
   searchQuery: string,
-  selectRegion: string,
-  selectedGrindOptions: string,
+  selectRegion: string[],
+  selectedGrindOptions: string[],
 ): ProductItem[] => {
   if (!productItems) return [];
 
+
+  
   return productItems.filter((item) => {
     const isNameMatch = item.name
       .toLowerCase()
