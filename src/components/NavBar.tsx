@@ -17,7 +17,7 @@ const NavBar = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end gap-3 ">
             <Navbar.Text className="text-white m-0">
-              Wasin Wachirapusitanun
+              Samitthichai Peeragun
             </Navbar.Text>
             <Navbar.Brand>
               <Image src={userImg} roundedCircle width="60px" height="auto" />

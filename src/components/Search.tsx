@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../../src/styles/button.css"
 interface SearchInputProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
@@ -35,9 +35,8 @@ const SearchInput: React.FC<SearchInputProps> = ({ setSearchQuery }) => {
       />
       <button
         type="button"
-        className="btn rounded-5 gap-2"
+        className="btn rounded-5 gap-2 button"
         data-mdb-ripple-init
-        style={{ backgroundColor: "#D6D6D6", color: "white" }}
         onClick={handleSearchButtonClick}
       >
         Search
