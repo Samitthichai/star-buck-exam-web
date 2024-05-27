@@ -99,7 +99,7 @@ const ProductContent = () => {
                 <Card
                   className="position-sticky card-hover"
                   onClick={() => handleToDetailPage(product.id)}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", height:"20rem" }}
                 >
                   <Card.Img
                     className="object-fit-cover bg-image"
