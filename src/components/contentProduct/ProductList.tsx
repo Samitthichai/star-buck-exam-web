@@ -97,7 +97,7 @@ const ProductContent = () => {
             currentItems.map((product) => (
               <Col key={product.id}>
                 <Card
-                  className="position-sticky card-hover"
+                  className=" card-hover"
                   onClick={() => handleToDetailPage(product.id)}
                   style={{ cursor: "pointer", height:"20rem" }}
                 >
